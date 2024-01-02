@@ -1,24 +1,50 @@
 import React, {useState} from 'react';
-import {SafeAreaView, Image} from 'react-native';
+import {SafeAreaView, TextInput} from 'react-native';
+import style from './assets/appStyle/appStyle';
 
 const App = () => {
-  const [imageSource, setImageSource] = useState({
-    uri: 'https://i.pinimg.com/736x/fa/ff/1a/faff1ae99e9a694e40e3c9d3f2a17cdc.jpg',
-  });
+  const [textValue, setTextValue] = useState('');
+  const [textValue2, setTextValue2] = useState('');
+  const [password, setPassword] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   return (
     <SafeAreaView>
-      <Image
-        source={require('./assets/images/cake.png')}
-        style={{width: 100, height: 100}}
-      />
-      <Image
-        source={imageSource}
-        style={{width: '100%', height: 400, backgroundColor: 'darkgray'}}
-        resizeMode={'contain'}
-        onError={() => {
-          console.log('error');
-          setImageSource(require('./assets/images/error.png'));
+      <TextInput
+        style={style.input}
+        value={textValue}
+        onChangeText={value => {
+          setTextValue(value);
         }}
+        placeholder="Imię"
+      />
+      <TextInput
+        style={style.input}
+        value={textValue2}
+        onChangeText={value => {
+          setTextValue2(value);
+        }}
+        placeholder="Nazwisko"
+        autoFocus={true}
+      />
+      <TextInput
+        style={style.input}
+        value={password}
+        onChangeText={value => {
+          setPassword(value);
+        }}
+        placeholder="Hasło"
+        secureTextEntry={true}
+        returnKeyType={'send'}
+      />
+      <TextInput
+        style={style.input}
+        value={phoneNumber}
+        onChangeText={value => {
+          setPhoneNumber(value);
+        }}
+        placeholder="Numer telefonu"
+        secureTextEntry={true}
+        keyboardType="phone-pad"
       />
     </SafeAreaView>
   );
