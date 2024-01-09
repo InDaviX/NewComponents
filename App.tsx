@@ -3,13 +3,17 @@ import {
   Pressable,
   SafeAreaView,
   ScrollView,
+  Switch,
   Text,
   TextInput,
+  TouchableWithoutFeedback,
+  View,
 } from 'react-native';
 
 const App = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [keepLoggedIn, setKeepLoggedIn] = useState(true);
   return (
     <SafeAreaView>
       <ScrollView>
@@ -37,6 +41,28 @@ const App = () => {
             setPassword(value);
           }}
         />
+        <TouchableWithoutFeedback
+          onPress={() => setKeepLoggedIn(!keepLoggedIn)}>
+          <View
+            style={{
+              flex: 1,
+              flexDirection: 'row',
+              alignItems: 'center',
+              marginBottom: 20,
+              justifyContent: 'center',
+            }}>
+            <Switch
+              style={{marginTop: 3}}
+              value={keepLoggedIn}
+              onValueChange={value => {
+                setKeepLoggedIn(value);
+              }}
+            />
+            <Text style={{paddingLeft: 5, paddingRight: 30, fontSize: 18}}>
+              Keep me logged in
+            </Text>
+          </View>
+        </TouchableWithoutFeedback>
         <Pressable
           disabled={email.length <= 10 || password.length < 8}
           style={[
