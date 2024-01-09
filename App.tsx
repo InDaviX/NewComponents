@@ -1,32 +1,68 @@
-import React from 'react';
-import {Image, SafeAreaView, ScrollView} from 'react-native';
+import React, {useState} from 'react';
+import {
+  Pressable,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  TextInput,
+} from 'react-native';
 
 const App = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   return (
     <SafeAreaView>
-      <ScrollView
-        onScroll={() => {
-          console.log('We scrolled the ScrollView');
-        }}
-        contentContainerStyle={{
-          padding: 5,
-          backgroundColor: 'red',
-          height: 510,
-        }}
-        showsVerticalScrollIndicator={false}
-        horizontal={true}>
-        <Image
-          source={require('./assets/images/cake.png')}
-          style={{height: 500, width: 500}}
+      <ScrollView>
+        <TextInput
+          value={email}
+          keyboardType={'email-address'}
+          placeholder="Email adress"
+          style={{borderWidth: 1, borderRadius: 9, padding: 10, margin: 20}}
+          onChangeText={value => {
+            setEmail(value);
+          }}
         />
-        <Image
-          source={require('./assets/images/cake.png')}
-          style={{height: 500, width: 500}}
+        <TextInput
+          value={password}
+          secureTextEntry={true}
+          placeholder="Password"
+          style={{
+            borderWidth: 1,
+            borderRadius: 9,
+            padding: 10,
+            margin: 20,
+            marginTop: 0,
+          }}
+          onChangeText={value => {
+            setPassword(value);
+          }}
         />
-        <Image
-          source={require('./assets/images/cake.png')}
-          style={{height: 500, width: 500}}
-        />
+        <Pressable
+          disabled={email.length <= 10 || password.length < 8}
+          style={[
+            {
+              backgroundColor: '#BBBBBB',
+              margin: 20,
+              marginTop: 0,
+              borderRadius: 9,
+              borderWidth: 1,
+            },
+            (email.length <= 10 || password.length < 8) && {opacity: 0.5},
+          ]}
+          onPress={() => {
+            console.log(email, password);
+          }}>
+          <Text
+            style={{
+              color: 'red',
+              textAlign: 'center',
+              padding: 10,
+              fontWeight: 'bold',
+              fontSize: 20,
+            }}>
+            Submit
+          </Text>
+        </Pressable>
       </ScrollView>
     </SafeAreaView>
   );
