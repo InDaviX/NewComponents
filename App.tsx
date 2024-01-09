@@ -9,6 +9,9 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faCheck} from '@fortawesome/free-solid-svg-icons/faCheck';
+import {faWifi} from '@fortawesome/free-solid-svg-icons';
 
 const App = () => {
   const [email, setEmail] = useState('');
@@ -72,6 +75,10 @@ const App = () => {
               marginTop: 0,
               borderRadius: 9,
               borderWidth: 1,
+              flex: 1,
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
             },
             (email.length <= 10 || password.length < 8) && {opacity: 0.5},
           ]}
@@ -88,7 +95,15 @@ const App = () => {
             }}>
             Submit
           </Text>
+          <FontAwesomeIcon icon={faCheck} color={'red'} size={25} />
         </Pressable>
+        <FontAwesomeIcon
+          icon={faWifi}
+          style={{alignSelf: 'center'}}
+          size={40}
+          transform={{rotate: 45}}
+        />
+        <Text style={{alignSelf: 'center', fontWeight: '600'}}>Ping: 35ms</Text>
       </ScrollView>
     </SafeAreaView>
   );
