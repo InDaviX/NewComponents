@@ -8,7 +8,11 @@ const App = () => {
         onScroll={() => {
           console.log('We scrolled the ScrollView');
         }}
-        contentContainerStyle={{backgroundColor: 'red', height: 510}}
+        contentContainerStyle={{
+          padding: 5,
+          backgroundColor: 'red',
+          height: 510,
+        }}
         showsVerticalScrollIndicator={false}
         horizontal={true}>
         <Image
