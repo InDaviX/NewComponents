@@ -1,11 +1,38 @@
 import React from 'react';
-import {SafeAreaView, Text} from 'react-native';
+import {View} from 'react-native';
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <Text>Hello World!</Text>
-    </SafeAreaView>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: 'red',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+      }}>
+      <View
+        style={{
+          backgroundColor: 'green',
+          width: 80,
+          height: 80,
+        }}
+      />
+      <View
+        style={{
+          backgroundColor: 'blue',
+          width: 80,
+          height: 80,
+        }}
+      />
+      <View
+        style={{
+          backgroundColor: 'yellow',
+          width: 80,
+          height: 80,
+        }}
+      />
+    </View>
   );
 };
 
