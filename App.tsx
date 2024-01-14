@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {
+  Alert,
   Pressable,
   SafeAreaView,
   ScrollView,
@@ -84,6 +85,12 @@ const App = () => {
           ]}
           onPress={() => {
             console.log(email, password);
+            Alert.alert(
+              'Zalogowano',
+              'Na adres: ' + email + '  A użyte hasło to: ' + password,
+              [{text: 'OK', onPress: () => console.log('OK Pressed')}],
+              {cancelable: true},
+            );
           }}>
           <Text
             style={{
